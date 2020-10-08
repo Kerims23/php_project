@@ -10,6 +10,6 @@ if ($email_address < 1){
 }
 #make sure it is not empty and contains @ for email
 #make sure password is not empty and accpets minimum of 8 characters 
-
+#
 
 ?>
