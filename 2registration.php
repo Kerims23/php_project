@@ -15,9 +15,9 @@
     <h1>Project 1</h1>
     </header>
     
-    <button onclick="window.location.href='./prjt1_part2.html'">Login:</button>
-    <button onclick="window.location.href='./prjt1_part3.html'">Register:</button>
-    <button onclick="window.location.href='./prjt1_part4.html'">Question Forum:</button>
+    <button onclick="window.location.href='.1login.php'">Login:</button>
+    <button onclick="window.location.href='.2registration.php'">Register:</button>
+    <button onclick="window.location.href='.3question_forum'">Question Forum:</button>
     <br>
 
 
