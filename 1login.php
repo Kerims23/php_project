@@ -29,7 +29,50 @@
     <br>
     <input type="submit">
 
+
+
+
+
+    <!--erros -->
+    <?php if(count($errors)>0)?>
+    <ul>
+        
+
+</ul>
+
+
+    <!--email-->
+    <?php ?>
+
+
+
+
+
+    <!--password-->
+
+
+
+
+
+    <!--submit-->
+
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!--not sure if this is right-->
     <process_data class="php"></process_data>
   

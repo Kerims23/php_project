@@ -42,6 +42,49 @@
   
 
 
+
+
+       <!--erros -->
+       <?php if(count($errors)>0)?>
+    <ul>
+        <?php foreach($errors as $error)?>
+        <list><?php echo ($error)?></list>
+
+</ul>
+
+
+    <!--first_name-->
+    <?php ?>
+
+
+
+
+
+    <!--last_name-->
+
+
+
+
+
+    <!--Birthday-->
+
+
+
+
+
+    <!--email-->
+
+
+
+
+
+
+    <!--submit-->
+
+
+
+
+
    
 
 
