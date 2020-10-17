@@ -11,9 +11,7 @@
 
 
 <body>
-    <header>
-    <h1>Project 1</h1>
-    </header>
+
 
     <button href='1login.php'>Login:</button>
     <button href='2registration.php'>Register:</button>
