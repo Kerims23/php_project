@@ -15,9 +15,9 @@
     <h1>Project 1</h1>
     </header>
     
-    <button onclick="window.location.href='.1login.php'">Login:</button>
-    <button onclick="window.location.href='.2registration.php'">Register:</button>
-    <button onclick="window.location.href='.3question_forum'">Question Forum:</button>
+    <button href='1login.php'>Login:</button>
+    <button href='2registration.php'>Register:</button>
+    <button href='3question_forum.php'>Question Forum:</button>
     <br>
 
 
@@ -44,30 +44,28 @@
 
 
 
-       <!--erros -->
-       <?php if(count($errors)>0)?>
-    <ul>
-        <?php foreach($errors as $error)?>
-        <list><?php echo ($error)?></list>
+<!--post from week 5 git example -->
 
-</ul>
+<?php
+	// POST Values from Form 
+	$first_name = filter_input(INPUT_POST, 'first_name');
+	$last_name = filter_input(INPUT_POST, 'last_name');
+    $birthday = filter_input(INPUT_POST, 'birthday');
+    $email_for_reg = filter_input(INPUT_POST, 'email_for_reg');
+    $password_for_reg = filter_input(INPUT_POST, 'password_for_reg');
 
-
-    <!--first_name-->
-    <?php ?>
-
-
-
-
-
-    <!--last_name-->
-
-
+    $first_name = (isset($first_name)) ? $first_name : '';
+    $last_name = (isset($last_name)) ? $last_name : '';
+    $birthday = (isset($birthday)) ? $birthday : '';
+    $email_for_reg = (isset($email_for_reg)) ? $email_for_reg : '';
+    $password_for_reg = (isset($password_for_reg)) ? $password_for_reg : '';
+    
+	
 
 
 
-    <!--Birthday-->
-
+    
+?>
 
 
 

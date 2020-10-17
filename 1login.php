@@ -15,9 +15,9 @@
     <h1>Project 1</h1>
     </header>
 
-    <button onclick="window.location.href='.1login.php'">Login:</button>
-    <button onclick="window.location.href='.2registration.php'">Register:</button>
-    <button onclick="window.location.href='.3question_forum'">Question Forum:</button>
+    <button href='1login.php'>Login:</button>
+    <button href='2registration.php'>Register:</button>
+    <button href='3question_forum.php'>Question Forum:</button>
     <br>
 
 
@@ -31,25 +31,18 @@
 
 
 
+<!--post from week 5 git example -->
+<?php
+
+$email_address = filter_input(type:INPUT_POST,'email address');
+$password = filter_input(type:INPUT_POST,'password');
 
 
-    <!--erros -->
-    <?php if(count($errors)>0)?>
-    <ul>
-        
-
-</ul>
+$email_address = (isset($email_address)) ? $email_address : '';
+$password = (isset($password)) ? $password : '';
 
 
-    <!--email-->
-    <?php ?>
-
-
-
-
-
-    <!--password-->
-
+?>
 
 
 
