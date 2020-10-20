@@ -1,6 +1,6 @@
 <?php
 //login form
-$email_address = filter_input(type:INPUT_POST,variable_name:'email address');
+$email_address = filter_input(type:INPUT_POST,variable_name:'email_address');
 $password = filter_input(type:INPUT_POST,variable_name:'password');
 
 if ($email_address < 1){

@@ -2,19 +2,10 @@
 
 //new question form
 $question = filter_input(type:INPUT_POST,variable_name:'question');
-$question_body = filter_input(type:INPUT_POST,variable_name:'question body');
-
-
-
-//do i need function before each filter_input. What does it do?
-
-$question_skills = function filter_input_array(type:INPUT_POST,variable_name:'question skills');
-#or
-$skills = array(
-    'Skill_1' =>
-)
-
-
+$question_body = filter_input(type:INPUT_POST,variable_name:'question_body');
+$question_skills = function filter_input(INPUT_POST,'question_skills');
+$question_skills = explode(',', $question_skills);
+$question_skills = ($question_skills !== NULL) ? $question_skills : array();
 
 
 
@@ -38,9 +29,6 @@ else ($question_body > 500){
 
 
 #conditions for question skills
-$question_skills = filter_input(INPUT_POST, 'skills');
-$question_skills = explode(',', $question_skills);
-
 if (empty($question_skills)){
     echo 'add more skills'
 }

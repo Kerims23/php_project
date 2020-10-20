@@ -1,82 +1,38 @@
 <!DOCTYPE html>
 <html>
-
-
 <head>
-
-<title>Project 1</title>
-<link rel="stylesheet" type="text/css" href="main.css">
-
+    <meta charset="UTF-8">
+    <title>Project 1</title>
 </head>
 
+    <body>
 
-<body>
+        <form action="4login_display.php" method="post">
 
-
-    <button href='1login.php'>Login:</button>
-    <button href='2registration.php'>Register:</button>
-    <button href='3question_forum.php'>Question Forum:</button>
-    <br>
-
-
-
-    <h2>Login Forum</h2>
-    <input type="text" name="Email" placeholder="Type Email Address" value="">
-    <br>
-    <input type="password" placeholder="Type Password" name="password">
-    <br>
-    <input type="submit">
+            <button href='1login.php'>Login:</button>
+            <button href='2registration.php'>Register:</button>
+            <button href='3question_forum.php'>Question Forum:</button>
+            <br>
 
 
 
-<!--post from week 5 git example -->
-<?php
-
-$email_address = filter_input(type:INPUT_POST,'email address');
-$password = filter_input(type:INPUT_POST,'password');
-
-
-$email_address = (isset($email_address)) ? $email_address : '';
-$password = (isset($password)) ? $password : '';
+            <h2>Login Forum</h2>
+            <input type="text" name="Email" placeholder="Type Email Address" value="">
+            <br>
+            <input type="password" placeholder="Type Password" name="password">
+            <br>
+            
+            <input type="submit" value="submit">
 
 
-?>
+        
 
 
+        </body>
+
+        
 
 
-    <!--submit-->
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--not sure if this is right-->
-    <process_data class="php"></process_data>
-  
-
-
-   
-
-
-
-
-    
-
-
-</body>
+ 
 
 </html>

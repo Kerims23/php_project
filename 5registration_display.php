@@ -1,7 +1,7 @@
 <?php
 //registration form
-$first_name = filter_input(type:INPUT_POST,variable_name:'first name');
-$last_name = filter_input(type:INPUT_POST,variable_name:'last name');
+$first_name = filter_input(type:INPUT_POST,variable_name:'first_name');
+$last_name = filter_input(type:INPUT_POST,variable_name:'last_name');
 $birthday = filter_input(type:INPUT_POST,variable_name:'birthday');
 $email_for_reg = filter_input(type:INPUT_POST,variable_name:'email');
 $password_for_reg = filter_input(type:INPUT_POST,variable_name:'password');
