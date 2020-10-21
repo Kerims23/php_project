@@ -1,15 +1,41 @@
 <?php
 //login form
-$email_address = filter_input(type:INPUT_POST,variable_name:'email_address');
-$password = filter_input(type:INPUT_POST,variable_name:'password');
+$email_address = filter_input(INPUT_POST,'email_address');
+$password = filter_input(INPUT_POST,'password');
 
-if ($email_address < 1){
-    echo 'you must type in a email'
-}else ('@'($email_address,FILTER_VALIDATE_EMAIL)==(false){
-    echo 'email does not have @'
+if ($email_address == NULL){
+    echo ' you must type in a email';
+    echo"<br>";
 }
-#make sure it is not empty and contains @ for email
-#make sure password is not empty and accpets minimum of 8 characters 
-#
+
+if ($password == NULL){
+    echo ' you must type in password';
+    echo"<br>";
+}
+
+
+
+
+
+//need help with conditional statments. for 4,5,6 and done.
+//also need help with buttons to navigate website.
 
 ?>
+
+
+
+
+
+<html>
+<head><title>Display Login Info</title></head>
+
+<body>
+    <div>
+        Email Address: <?php echo $email_address; ?>
+    </div>
+    <div>
+        Password: <?php echo $password; ?>
+    </div>
+
+</body>
+</html>

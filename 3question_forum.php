@@ -7,14 +7,16 @@
 
     <body>
 
+
+        <button href='1login.php'>Login:</button>
+        <button href='2registration.php'>Register:</button>
+        <button href='3question_forum.php'>Question Forum:</button>
+        <br>
+
+
+
+
         <form action="6question_form_display.php" method="post">
-
-
-            <button href='1login.php'>Login:</button>
-            <button href='2registration.php'>Register:</button>
-            <button href='3question_forum.php'>Question Forum:</button>
-            <br>
-
 
 
             <h2>Question Forum</h2>
