@@ -8,15 +8,15 @@
     <body>
 
 
-        <button href='1login.php'>Login:</button>
-        <button href='2registration.php'>Register:</button>
-        <button href='3question_forum.php'>Question Forum:</button>
+        <a href='1login.php'>Login:</a>
+        <a href='2registration.php'>Register:</a>
+        <a href='3question_forum.php'>Question Forum:</a>
         <br>
 
 
 
 
-        <form action="6question_form_display.php" method="post">
+        <form action="6question_forum_display.php" method="post">
 
 
             <h2>Question Forum</h2>

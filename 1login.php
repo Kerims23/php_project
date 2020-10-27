@@ -7,9 +7,9 @@
 
     <body>
 
-        <button href='1login.php'>Login:</button>
-        <button href='2registration.php'>Register:</button>
-        <button href='3question_forum.php'>Question Forum:</button>
+        <a href='1login.php'>Login:</a>
+        <a href='2registration.php'>Register:</a>
+        <a href='3question_forum.php'>Question Forum:</a>
         <br>
 
 
