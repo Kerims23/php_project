@@ -17,8 +17,6 @@ if ($password == NULL){
 
 
 
-//need help with conditional statments. for 4,5,6 and done.
-//also need help with buttons to navigate website.
 
 ?>
 
