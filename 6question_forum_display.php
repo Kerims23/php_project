@@ -9,33 +9,29 @@ $question_skills = ($question_skills !== NULL) ? $question_skills : array();
 
 
 #conditions for question 
-if ($question < 1){
+if (strlen($question) < 1){
     echo ' Answer the question';
     echo"<br>";
 }
-elseif ($question < 3){
+elseif (strlen($question) < 3){
     echo ' name must be greater than 3 characters';
     echo"<br>";
 }
 
 
 #conditions for question body
-if ($question_body < 1){
+if (strlen($question_body) < 1){
     echo ' Response must be greater than 1 character and less than 500';
     echo"<br>";
 }
-elseif ($question_body > 500){
+elseif (strlen($question_body) > 500){
     echo ' Response must be greater than 1 character and less than 500';
     echo"<br>";
 }
 
 
 #conditions for question skills
-if (empty($question_skills)){
-    echo ' add more skills';
-    echo"<br>";
-}
-elseif ($question_skills >2){
+if (count($question_skills) <3){
     echo ' minimum of 3 skills or more';
     echo"<br>";
 }

@@ -22,11 +22,11 @@
             <h2>Question Forum</h2>
             <input type="text" name="question" placeholder="What color is grass?" value="">
             <br>
-            <p>
-                <label>Explain your answer</label>
-                <textarea></textarea>
-            </p>
-
+        
+            <label>Explain your answer</label>
+            <input type="text" name="question_body" value="">
+            <br>
+              
             <input type="array" name="question_skills" placeholder="Add skill" value="">
             <br>
             
