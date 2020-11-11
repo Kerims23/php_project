@@ -1,5 +1,8 @@
 <?php
 
+require('pdo.php')
+
+
 //new question form
 $question = filter_input(INPUT_POST,'question');
 $question_body = filter_input(INPUT_POST,'question_body');
@@ -35,6 +38,34 @@ if (count($question_skills) <3){
     echo ' minimum of 3 skills or more';
     echo"<br>";
 }
+
+
+
+//sql query
+$query='INSTER INTO accounts
+            (question, question_body, question_skills)
+        VALUES
+            (:question, :question_body, :question_skills)';
+
+//PDO statement
+$statement = $db->prepare($query);
+//binding vales to sql
+$statement->bind_value(':question',$question);
+$statement->bind_value(':question_body',$question_body);
+$statement->bind_value(':question_skills',$question_skills);
+
+
+//execute sql query
+$statement->execute();
+
+//close database
+$statement->close_cursor();
+
+
+
+
+
+
 
 ?>
 

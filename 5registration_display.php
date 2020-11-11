@@ -1,4 +1,8 @@
 <?php
+
+require('pdo.php')
+
+
 //registration form
 $first_name = filter_input(INPUT_POST,'first_name');
 $last_name = filter_input(INPUT_POST,'last_name');
@@ -30,6 +34,33 @@ if(strlen($password) <8){
     echo ' enter a password with at least 8 characters';
     echo"<br>";
 }
+
+
+
+//sql query
+$query='INSTER INTO accounts
+            (email, password, first_name, last_name, date)
+        VALUES
+            (:email_address, :password, :first_name, :last_name, :data)';
+
+//PDO statement
+$statement = $db->prepare($query);
+//binding vales to sql
+$statement->bind_value(':email_address',$email_address);
+$statement->bind_value(':password',$password);
+$statement->bind_value(':first_name',$first_name);
+$statement->bind_value(':last_name',$last_name);
+$statement->bind_value(':date',$date);
+
+//execute sql query
+$statement->execute();
+
+//close database
+$statement->close_cursor();
+
+
+
+
 
 
 ?>

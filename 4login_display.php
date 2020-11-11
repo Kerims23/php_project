@@ -1,4 +1,8 @@
 <?php
+
+require('pdo.php')
+
+
 //login form
 $email_address = filter_input(INPUT_POST,'email_address');
 $password = filter_input(INPUT_POST,'password');
@@ -14,7 +18,23 @@ if ($password == NULL){
 }
 
 
+//sql query
+$query='INSTER INTO accounts
+            (email_address, password)
+        VALUES
+            (:email_address, :password)';
 
+//PDO statement
+$statement = $db->prepare($query);
+//binding vales to sql
+$statement->bind_value(':email_address',$email_address);
+$statement->bind_value(':password',$password);
+
+//execute sql query
+$statement->execute();
+
+//close database
+$statement->close_cursor();
 
 
 
