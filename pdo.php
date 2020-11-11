@@ -1,8 +1,7 @@
 <?php
 
-echo "<h1>PDO demo!</h1>";
-$username = '<ks835>';
-$password = '<Kerminator23!>';
+$username = 'ks835';
+$password = 'Kerminator23!';
 $hostname = 'ks835@njit.edu';
 
 $dsn = "mysql:host=$hostname;dbname=$username";
@@ -13,9 +12,5 @@ try {
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
-
-
-
-
 
 ?>
