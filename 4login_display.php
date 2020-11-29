@@ -19,7 +19,7 @@ if ($password == NULL){
 
 
 //sql query
-$query='INSTER INTO accounts
+$query='SELECT INTO accounts
             (email_address, password)
         VALUES
             (:email_address, :password)';
@@ -45,7 +45,9 @@ $statement->close_cursor();
 
 
 <html>
-<head><title>Display Login Info</title></head>
+
+<head><title>Display Login Info</title> <></head>
+
 
 <body>
     <div>

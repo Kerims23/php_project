@@ -38,7 +38,7 @@ if(strlen($password) <8){
 
 
 //sql query
-$query='INSTER INTO accounts
+$query='INSERT INTO accounts
             (email, password, first_name, last_name, date)
         VALUES
             (:email_address, :password, :first_name, :last_name, :data)';

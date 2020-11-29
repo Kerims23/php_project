@@ -42,7 +42,7 @@ if (count($question_skills) <3){
 
 
 //sql query
-$query='INSTER INTO accounts
+$query='INSERT INTO accounts
             (question, question_body, question_skills)
         VALUES
             (:question, :question_body, :question_skills)';
