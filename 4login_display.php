@@ -36,7 +36,7 @@ function validate_login($email_address,$password){
 }
 
 
-//do i need to insert into or redirect to registration and how do i do so? just link?
+//do i need to insert into or redirect to registration and how do i do so? just link??
  
 
 
