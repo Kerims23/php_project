@@ -37,7 +37,10 @@ function validate_login($email_address,$password){
 
 
 //do i need to insert into or redirect to registration and how do i do so? just link?
+ 
 
+
+//this is from question_forum
 function create_question ($title,$body,$skills,$ownerID){
     global $db;
 
@@ -52,7 +55,7 @@ function create_question ($title,$body,$skills,$ownerID){
 
     $statement->execute();
     $statement->close_cursor();
-     
+}
 
 
 
