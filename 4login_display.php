@@ -17,24 +17,44 @@ if ($password == NULL){
     echo"<br>";
 }
 
-
+//if user was found display questions, if not found redirect to registration for all forums
 //sql query
-$query='SELECT INTO accounts
-            (email_address, password)
-        VALUES
-            (:email_address, :password)';
 
-//PDO statement
-$statement = $db->prepare($query);
-//binding vales to sql
-$statement->bind_value(':email_address',$email_address);
-$statement->bind_value(':password',$password);
 
-//execute sql query
-$statement->execute();
+function validate_login($email_address,$password){
+    global $db;
+    $query='SELECT * FROM accounts WHERE email_address=:email_address AND password=:password';
+    $statement=db->prepare($query);
+    $statement->bind_value(':email_address',$email_address);
+    $statement->bind_value(':password',$password);
+    $statement->execute();
+    $user=$statement->fetch();
+    $statement->close_cursor();
 
-//close database
-$statement->close_cursor();
+
+
+}
+
+
+//do i need to insert into or redirect to registration and how do i do so? just link?
+
+function create_question ($title,$body,$skills,$ownerID){
+    global $db;
+
+    $query = 'INSERT INTO questions
+    (:title,:body,:skills,:ownerID)';
+
+    $statement=$db->prepare($query);
+    $statement->bind_value(':ownerID',$ownerID);
+    $statement->bind_value(':question',$question);
+    $statement->bind_value(':question_body',$question_body);
+    $statement->bind_value(':question_skills',$question_skills);
+
+    $statement->execute();
+    $statement->close_cursor();
+     
+
+
 
 
 

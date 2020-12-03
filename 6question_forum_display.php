@@ -41,30 +41,39 @@ if (count($question_skills) <3){
 
 
 
+
+
 //sql query
-$query='INSERT INTO accounts
-            (question, question_body, question_skills)
-        VALUES
-            (:question, :question_body, :question_skills)';
 
-//PDO statement
-$statement = $db->prepare($query);
-//binding vales to sql
-$statement->bind_value(':question',$question);
-$statement->bind_value(':question_body',$question_body);
-$statement->bind_value(':question_skills',$question_skills);
+function get_user_questions($userID){
+    global $db;
+    $query='SELECT * From questions WHERE ownerID= :userID';
+     $statement=db->prepare($query);
+     $statement->bind_value(':userID',$userID);
+     $statement->execute();
+     $questions_forum=$statement->fetch_all();
+     $statement->close_cursor();
 
+     return $questions_forum
+}
 
-//execute sql query
-$statement->execute();
+function create_question ($title,$body,$skills,$ownerID){
+    global $db;
 
-//close database
-$statement->close_cursor();
+    $query = 'INSERT INTO questions
+    (:title,:body,:skills,:ownerID)';
 
+    $statement=$db->prepare($query);
+    $statement->bind_value(':ownerID',$ownerID);
+    $statement->bind_value(':question',$question);
+    $statement->bind_value(':question_body',$question_body);
+    $statement->bind_value(':question_skills',$question_skills);
 
+    $statement->execute();
+    $statement->close_cursor();
+     
 
-
-
+}
 
 
 ?>

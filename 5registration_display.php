@@ -37,26 +37,40 @@ if(strlen($password) <8){
 
 
 
-//sql query
-$query='INSERT INTO accounts
-            (email, password, first_name, last_name, date)
-        VALUES
-            (:email_address, :password, :first_name, :last_name, :data)';
 
-//PDO statement
-$statement = $db->prepare($query);
-//binding vales to sql
-$statement->bind_value(':email_address',$email_address);
-$statement->bind_value(':password',$password);
-$statement->bind_value(':first_name',$first_name);
-$statement->bind_value(':last_name',$last_name);
-$statement->bind_value(':date',$date);
 
-//execute sql query
-$statement->execute();
 
-//close database
-$statement->close_cursor();
+function create_user($userID){
+    global $db;
+    $query='SELECT * From questions WHERE ownerID= :userID';
+     $statement=db->prepare($query);
+     $statement->bind_value(':userID',$userID);
+     $statement->execute();
+     $account=$statement->fetch_all();
+     $statement->close_cursor();
+
+     return $account
+}
+
+function create_account ($first_name,$last_name,$date,$email,$password){
+    global $db;
+
+    $query = 'INSERT INTO questions
+    (:title,:body,:skills,:ownerID)';
+
+    $statement=$db->prepare($query);
+    $statement->bind_value(':ownerID',$ownerID);
+    $statement->bind_value(':first_name',$first_name);
+    $statement->bind_value(':last_name',$last_name);
+    $statement->bind_value(':date',$date);
+    $statement->bind_value(':email',$email);
+    $statement->bind_value(':password',$password);
+
+    $statement->execute();
+    $statement->close_cursor();
+     
+
+}
 
 
 
