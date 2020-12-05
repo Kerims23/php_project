@@ -1,6 +1,6 @@
 <?php
 
-require('pdo.php')
+require('pdo.php');
 
 
 //new question form
@@ -71,6 +71,8 @@ function create_question ($title,$body,$skills,$ownerID){
 
     $statement->execute();
     $statement->close_cursor();
+
+    return $user;
      
 
 }
@@ -80,19 +82,26 @@ function create_question ($title,$body,$skills,$ownerID){
 
 
 <html>
-<head><title>Display Login Info</title></head>
+<head>
+  <link rel="stylesheet" type="text/css" href="test.css">
+  <h1>Project 2</h1>
+</head>
+    <body>
+        <div>
+            Question: <?php echo $question; ?>
+        </div>
+        <div>
+            Question Body: <?php echo $question_body; ?>
+        </div>
+        <div>
+            Question Skills: <?php  print_r($question_skills); ?>
+        </div>
 
-<body>
-    <div>
-        Question: <?php echo $question; ?>
-    </div>
-    <div>
-        Question Body: <?php echo $question_body; ?>
-    </div>
-    <div>
-        Question Skills: <?php  print_r($question_skills); ?>
-    </div>
+        <br>
+        <h3>Links</h3>
+        <li class="active"><a href="1login.php">Login</a></li>
+        <li><a href="2registration.php">Register</a></li>
+        <li><a href="3question_forum.php">Question</a></li>
 
-
-</body>
+    </body>
 </html>

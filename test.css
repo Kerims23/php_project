@@ -1,0 +1,24 @@
+h1{
+    color: blue; font-size: 40pt; text-align: center;text-align: center;
+
+}
+h2{
+    color:brown; text-align: center; font-size: 25pt;
+}
+
+input{
+    height: 50px; font-size: 14pt; 
+}
+li{
+    color: lightpink; font-size: 14pt; text-align: center;
+}
+h3{
+    color:darkcyan; font-size: 16pt; text-align: center;
+}
+div{
+    text-align: center;
+}
+body {
+    background-color: lightgoldenrodyellow;
+  }
+ 

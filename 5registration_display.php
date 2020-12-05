@@ -81,24 +81,33 @@ function create_account ($first_name,$last_name,$date,$email,$password){
 
 
 <html>
-<head><title>Display Registration Info</title></head>
-
-<body>
-    <div>
-        First Name: <?php echo $first_name; ?>
-    </div>
-    <div>
-        Last Name: <?php echo $last_name; ?>
-    </div>
-    <div>
-        Birthday: <?php echo $date; ?>
-    </div>
-    <div>
-        Email Address: <?php echo $email; ?>
-    </div>
-    <div>
-        Password: <?php echo $password; ?>
-    </div>
+<head>
+  <link rel="stylesheet" type="text/css" href="test.css">
+  <h1>Project 2</h1>
+</head>
+    <body>
+        <h2>Display page</h2>
+        <div>
+            First Name: <?php echo $first_name; ?>
+        </div>
+        <div>
+            Last Name: <?php echo $last_name; ?>
+        </div>
+        <div>
+            Birthday: <?php echo $date; ?>
+        </div>
+        <div>
+            Email Address: <?php echo $email; ?>
+        </div>
+        <div>
+            Password: <?php echo $password; ?>
+        </div>
     
-</body>
+        <br>
+        <h3>Links</h3>
+        <li class="active"><a href="1login.php">Login</a></li>
+        <li><a href="2registration.php">Register</a></li>
+        <li><a href="3question_forum.php">Question</a></li>
+        
+    </body>
 </html>

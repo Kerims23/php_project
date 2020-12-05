@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Project 1</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="test.css">
+  <h1>Project 2</h1>
 </head>
 
     <body>
-    
-
-        <a href='1login.php'>Login:</a>
-        <a href='2registration.php'>Register:</a>
-        <a href='3question_forum.php'>Question Forum:</a>
+        <h3>Links</h3>
+        <li class="active"><a href="1login.php">Login</a></li>
+        <li><a href="2registration.php">Register</a></li>
+        <li><a href="3question_forum.php">Question</a></li>
         <br>
 
 
-        <form action="5registration_display.php" method="post">
-
-            
+    <form action="5registration_display.php" method="post">
+        <div class="text-center">
             <h2>Register Forum</h2>
-
             <input type="text" name="first_name" placeholder="Type First name" value="">
             <br>
 
@@ -32,12 +30,14 @@
             <br>
 
             <input type="password" placeholder="Type Password" name="password">
-            <br>
+            <br><br>
 
             <input type="submit" value="submit">
+            <br>
+            
+            </div>
 
-        
 
-</body>
+    </body>
 
 </html>

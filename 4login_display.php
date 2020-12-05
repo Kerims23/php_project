@@ -1,6 +1,6 @@
 <?php
 
-require('pdo.php')
+require('pdo.php');
 
 
 //login form
@@ -21,9 +21,9 @@ if ($password == NULL){
 //sql query
 
 
-function validate_login($email_address,$password){
+$user = function validate_login($email_address,$password){
     global $db;
-    $query='SELECT * FROM accounts WHERE email_address=:email_address AND password=:password';
+    $query='SELECT * FROM accounts WHERE email=:email_address AND password=:password';
     $statement=db->prepare($query);
     $statement->bind_value(':email_address',$email_address);
     $statement->bind_value(':password',$password);
@@ -31,35 +31,15 @@ function validate_login($email_address,$password){
     $user=$statement->fetch();
     $statement->close_cursor();
 
+    return $user
 
-
-}
-
-
-//do i need to insert into or redirect to registration and how do i do so? just link??
- 
-
-
-//this is from question_forum
-function create_question ($title,$body,$skills,$ownerID){
-    global $db;
-
-    $query = 'INSERT INTO questions
-    (:title,:body,:skills,:ownerID)';
-
-    $statement=$db->prepare($query);
-    $statement->bind_value(':ownerID',$ownerID);
-    $statement->bind_value(':question',$question);
-    $statement->bind_value(':question_body',$question_body);
-    $statement->bind_value(':question_skills',$question_skills);
-
-    $statement->execute();
-    $statement->close_cursor();
 }
 
 
 
 
+//css type 
+//november 11 and do part 2 
 
 ?>
 
@@ -67,18 +47,26 @@ function create_question ($title,$body,$skills,$ownerID){
 
 
 
+
 <html>
+<head>
+  <link rel="stylesheet" type="text/css" href="test.css">
+  <h1>Project 2</h1>
+</head>
+    <body>
+        <h2>Display page</h2>
+        <div>
+            Email Address: <?php echo $email_address; ?>
+        </div>
+        <div>
+            Password: <?php echo $password; ?>
+        </div>
+        <br>
+        <h3>Links</h3>
+        <li class="active"><a href="1login.php">Login</a></li>
+        <li><a href="2registration.php">Register</a></li>
+        <li><a href="3question_forum.php">Question</a></li>
+        <br>
 
-<head><title>Display Login Info</title> <></head>
-
-
-<body>
-    <div>
-        Email Address: <?php echo $email_address; ?>
-    </div>
-    <div>
-        Password: <?php echo $password; ?>
-    </div>
-
-</body>
+    </body>
 </html>

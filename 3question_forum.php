@@ -1,39 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Project 1</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="test.css">
+  <h1>Project 2</h1>
 </head>
 
     <body>
+        <h3>Links</h3>
+        <li class="active"><a href="1login.php">Login</a></li>
+        <li><a href="2registration.php">Register</a></li>
+        <li><a href="3question_forum.php">Question</a></li>
+    
 
 
-        <a href='1login.php'>Login:</a>
-        <a href='2registration.php'>Register:</a>
-        <a href='3question_forum.php'>Question Forum:</a>
-        <br>
-
-
-
-
+        
+            
         <form action="6question_forum_display.php" method="post">
-
+            <div class="text-center">
 
             <h2>Question Forum</h2>
-            <input type="text" name="question" placeholder="What color is grass?" value="">
-            <br>
-        
-            <label>Explain your answer</label>
-            <input type="text" name="question_body" value="">
-            <br>
-              
-            <input type="array" name="question_skills" placeholder="Add skill" value="">
-            <br>
             
+
+            <h3>What color is grass?</h3>
+            <input type="text" name="question" placeholder="Ex: Green" value="">
+            
+        
+            <h3>Explain your answer</h3>
+            
+            <input type="text" name="question_body" placeholder="Ex: Because of sunlight" value="">
+            
+            <h3>What skills do you have?</h3>
+            <input type="array" name="question_skills" placeholder="Ex:PHP, Python, etc" value="">
+            
+            <br><br>
             <input type="submit" value="submit">
 
+            </div>
 
 
-</body>
+    </body>
 
 </html>
