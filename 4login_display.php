@@ -85,8 +85,8 @@ function validate_login($email,$password){
     $db=Database::getDB();
     $query='SELECT * FROM accounts WHERE email=:email_address AND password=:password';
     $statement=$db->prepare($query);
-    $statement->bind_value(parameter:':email',$email_address);
-    $statement->bind_value(parameter:':password',$password);
+    $statement->bindValue(parameter:':email',$email_address);
+    $statement->bindValue(parameter:':password',$password);
     $statement->execute();
     $user=$statement->fetch();
     $statement->close_cursor();

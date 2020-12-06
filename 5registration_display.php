@@ -44,7 +44,7 @@ $account = function create_user($userID){
     $db=Database::getDB();
     $query='SELECT * From questions WHERE ownerID= :userID';
      $statement=db->prepare($query);
-     $statement->bind_value(':userID',$userID);
+     $statement->bindValue(':userID',$userID);
      $statement->execute();
      $account=$statement->fetch_all();
      $statement->close_cursor();
@@ -59,12 +59,12 @@ function create_account ($first_name,$last_name,$date,$email,$password){
     (:title,:body,:skills,:ownerID)';
 
     $statement=$db->prepare($query);
-    $statement->bind_value(':ownerID',$ownerID);
-    $statement->bind_value(':first_name',$first_name);
-    $statement->bind_value(':last_name',$last_name);
-    $statement->bind_value(':date',$date);
-    $statement->bind_value(':email',$email);
-    $statement->bind_value(':password',$password);
+    $statement->bindValue(':ownerID',$ownerID);
+    $statement->bindValue(':first_name',$first_name);
+    $statement->bindValue(':last_name',$last_name);
+    $statement->bindValue(':date',$date);
+    $statement->bindValue(':email',$email);
+    $statement->bindValue(':password',$password);
 
     $statement->execute();
     $statement->close_cursor();

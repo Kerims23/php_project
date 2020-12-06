@@ -52,7 +52,7 @@ $question_forum = function get_user_questions($userID){
     $db=Database::getDB();
     $query='SELECT * From questions WHERE ownerID= :userID';
      $statement=db->prepare($query);
-     $statement->bind_value(':userID',$userID);
+     $statement->bindValue(':userID',$userID);
      $statement->execute();
      $questions_forum=$statement->fetch_all();
      $statement->close_cursor();
