@@ -4,12 +4,28 @@ require('pdo.php');
 
 
 //login form
-$email_address = filter_input(INPUT_POST,'email_address');
-$password = filter_input(INPUT_POST,'password');
 
-if ($email_address == NULL){
-    echo ' you must type in a email';
-    echo"<br>";
+
+
+
+case'validate_login':{
+    $email = filter_input(INPUT_POST,'email_address');
+    $password = filter_input(INPUT_POST,'password');
+
+    if ($email == NULL){
+        echo ' you must type in a email';
+        echo"<br>";
+    }else{
+        $userID=validate_login($email,$password);
+        if($userID==false){
+            header(string:"location: .?action=display_registration");
+        }else{
+            header(string:"location: .?action=display_questions&userID=$userID")
+        }
+
+    }
+
+    break;
 }
 
 if ($password == NULL){
@@ -17,29 +33,75 @@ if ($password == NULL){
     echo"<br>";
 }
 
+
+case 'display_registration';{
+    include('views/5registration_display.php');
+    break;
+}
+
+
+case 'display_questions':{
+    $userID=filter_input(type:INPUT_GET, variable_name:'userID');
+    if($userID==NULL || $userID<0){
+        header(string:'location: .?action=display_login');
+    }else{
+        $questions=get_users_questions($userID);
+        include('views/6question_forum.php')
+    }
+    break;
+}
+
+case 'display_questions_forum':{
+    $userID=filter_input(type:INPUT_GET, variable_name:'userID');
+    if($userID==NULL || $userID<0){
+        header(string:'location: .?action=display_login');
+    }else{
+        include('views/6question_forum.php')
+    }
+    break;
+}
+
+
+case 'submit_question';{
+    $userID=filter_input(type:INPUT_POST,variable_name:'userID');
+    $title=filter_input(type:INPUT_POST,variable_name:'title');
+    $body=filter_input(type:INPUT_POST,variable_name:'body');
+    $skills=filter_input(type:INPUT_POST,'skills');
+    if($userID==NULL || $title==NULL || $body==NULL || $skills==NULL){
+        echo 'Error'
+    }else(
+        create_question($title,$body,$skills,$userID);
+        header(string:"location: .?action=display_questions&userID=$userID");
+    )
+
+    break;
+}
+
 //if user was found display questions, if not found redirect to registration for all forums
 //sql query
 
 
-$user = function validate_login($email_address,$password){
-    global $db;
+function validate_login($email,$password){
+    $db=Database::getDB();
     $query='SELECT * FROM accounts WHERE email=:email_address AND password=:password';
-    $statement=db->prepare($query);
-    $statement->bind_value(':email_address',$email_address);
-    $statement->bind_value(':password',$password);
+    $statement=$db->prepare($query);
+    $statement->bind_value(parameter:':email',$email_address);
+    $statement->bind_value(parameter:':password',$password);
     $statement->execute();
     $user=$statement->fetch();
     $statement->close_cursor();
 
-    return $user
+    if(count($user)>0){
+        return $user['id'];
+    }else{
+        return false;
+    }
+
 
 }
 
 
 
-
-//css type 
-//november 11 and do part 2 
 
 ?>
 

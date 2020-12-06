@@ -40,8 +40,8 @@ if(strlen($password) <8){
 
 
 
-function create_user($userID){
-    global $db;
+$account = function create_user($userID){
+    $db=Database::getDB();
     $query='SELECT * From questions WHERE ownerID= :userID';
      $statement=db->prepare($query);
      $statement->bind_value(':userID',$userID);
@@ -53,9 +53,9 @@ function create_user($userID){
 }
 
 function create_account ($first_name,$last_name,$date,$email,$password){
-    global $db;
+    $db=Database::getDB();
 
-    $query = 'INSERT INTO questions
+    $query = 'INSERT INTO account
     (:title,:body,:skills,:ownerID)';
 
     $statement=$db->prepare($query);
@@ -74,10 +74,10 @@ function create_account ($first_name,$last_name,$date,$email,$password){
 
 
 
-
-
-
 ?>
+
+
+
 
 
 <html>

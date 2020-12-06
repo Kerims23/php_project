@@ -43,10 +43,13 @@ if (count($question_skills) <3){
 
 
 
+
+
+
 //sql query
 
-function get_user_questions($userID){
-    global $db;
+$question_forum = function get_user_questions($userID){
+    $db=Database::getDB();
     $query='SELECT * From questions WHERE ownerID= :userID';
      $statement=db->prepare($query);
      $statement->bind_value(':userID',$userID);
@@ -54,20 +57,22 @@ function get_user_questions($userID){
      $questions_forum=$statement->fetch_all();
      $statement->close_cursor();
 
-     return $questions_forum
+     return $questions_forum;
 }
 
-function create_question ($title,$body,$skills,$ownerID){
-    global $db;
+$user = function create_question ($title,$body,$skills,$ownerID){
+    $db=Database::getDB();
 
     $query = 'INSERT INTO questions
-    (:title,:body,:skills,:ownerID)';
+            (title,body,skills,ownerID)
+        VALUES
+            (:title,:body,:skills,:ownerID)';
 
     $statement=$db->prepare($query);
-    $statement->bind_value(':ownerID',$ownerID);
-    $statement->bind_value(':question',$question);
-    $statement->bind_value(':question_body',$question_body);
-    $statement->bind_value(':question_skills',$question_skills);
+    $statement->bindValue(':ownerID',$ownerID);
+    $statement->bindValue(':title',$title);
+    $statement->bindValue(':body',$body);
+    $statement->bindValue(':skills',$skills);
 
     $statement->execute();
     $statement->close_cursor();
@@ -78,7 +83,12 @@ function create_question ($title,$body,$skills,$ownerID){
 }
 
 
+
+
 ?>
+
+
+
 
 
 <html>
@@ -87,6 +97,44 @@ function create_question ($title,$body,$skills,$ownerID){
   <h1>Project 2</h1>
 </head>
     <body>
+        <table>
+            <tr>
+                <th>NAME</th>
+                <th>BODY</th>
+            </tr>
+            <?php foreach (questions as $question) : ?>
+                <tr>
+                    <td><?php echo $question['title']; ?> </td>
+                    <td><?php echo $question['body']; ?> </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+
+        <form action="1login.php" method="post">
+            <input type="hidden" name="action" value="submit_question">
+            <input type="hidden" name="userID" value="<?php echo $userID; ?>">
+            
+            <div class="form-group">
+                <label for="title">Question Title</label>
+                <input type="text" name="title">
+            </div>
+
+            <div class="form-group">
+                <label for="title">Question Title</label>
+                <input type="text" name="title">
+            </div>
+
+            <div class="form-group">
+                <label for="skills">Question Title</label>
+                <input type="text" name="skills">
+            </div>
+
+            <input type="submit" class="btn btn-primary" value="Add Question">
+        </form>
+
+
+
+
         <div>
             Question: <?php echo $question; ?>
         </div>
