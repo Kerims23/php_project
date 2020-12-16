@@ -1,5 +1,6 @@
 <?php
 require('pdo.php');
+require('account.php');
 require('accounts_db.php');
 require('questions_db.php');
 
@@ -20,12 +21,11 @@ switch ($action){
     case'validate_login':{
         $email = filter_input(INPUT_POST,'email_address');
         $password = filter_input(INPUT_POST,'password');
-    
         if ($email == NULL){
             echo ' you must type in a email';
             echo"<br>";
         }else{
-            $userId=accounts_db::validate_login($email,$password);
+            $user=accounts_db::validate_login($email,$password);
             $userId=$user->getId();
             $userId=validate_login($email,$password);
             if($userId==false){
@@ -92,6 +92,14 @@ switch ($action){
             header("Location: .?action=display_questions&userId=$userId");
         }
         break;
+    }
+
+    case 'cookie':{
+        $cookieId=$userId
+        $cookieEmail=$email
+        $cookiePassword=$password
+        $cookieQuestions
+        $cookie=setcookie()
     }
 
     default:{
