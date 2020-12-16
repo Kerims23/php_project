@@ -25,11 +25,11 @@ switch ($action){
             echo ' you must type in a email';
             echo"<br>";
         }else{
-            $userId=Accounts_db::validate_login($email,$password);
+            $userId=accounts_db::validate_login($email,$password);
             $userId=$user->getId();
             $userId=validate_login($email,$password);
             if($userId==false){
-                header(string:"location: .?action=display_registration");
+                header(string:"location: indexphp?action=display_registration");
             }else{
                 header(string:"location: .?action=display_questions&userId=$userId");
             }
@@ -80,7 +80,7 @@ switch ($action){
     
         break;
     }
-    
+
     case 'delete_question': {
         $questionId = filter_input(INPUT_POST, 'questionId');
         $userId = filter_input(INPUT_POST, 'userId');
