@@ -81,6 +81,18 @@ switch ($action){
         break;
     }
     
+    case 'delete_question': {
+        $questionId = filter_input(INPUT_POST, 'questionId');
+        $userId = filter_input(INPUT_POST, 'userId');
+        if ($questionId == NULL || $userId == NULL) {
+            $error = 'Please enter your information';
+            include('error.php');
+        } else {
+            delete_question($questionId);
+            header("Location: .?action=display_questions&userId=$userId");
+        }
+        break;
+    }
 
     default:{
         $error = 'Error';

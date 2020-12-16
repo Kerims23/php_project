@@ -90,6 +90,12 @@ if (count($question_skills) <3){
             <input type="submit" class="btn btn-primary" value="Add Question">
         </form>
 
+        <form action="." method="post">
+                <input type="hidden" name="action" value="delete_question">
+                <input type="hidden" name="questionId" value="<?php echo $question['id']; ?>">
+                <input type="hidden" name="userId" value="<?php echo $userId; ?>">
+                <input type="submit" value="Delete Question">
+            </form>
 
 
 
