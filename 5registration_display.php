@@ -1,6 +1,6 @@
 <?php
 
-require('pdo.php')
+require('pdo.php');
 
 
 //registration form

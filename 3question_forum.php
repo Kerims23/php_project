@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="test.css">
-  <h1>Project 2</h1>
+  <h1>Project 4</h1>
 </head>
 
     <body>
@@ -16,7 +16,7 @@
 
         
             
-        <form action="6question_forum_display.php" method="post">
+        <form action="index.php" method="post">
             <div class="text-center">
 
             <h2>Question Forum</h2>

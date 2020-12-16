@@ -43,17 +43,6 @@ if (count($question_skills) <3){
 
 
 
-
-
-
-//sql query
-
-
-
-
-
-
-
 ?>
 
 

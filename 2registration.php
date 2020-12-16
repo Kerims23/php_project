@@ -14,7 +14,7 @@
         <br>
 
 
-    <form action="5registration_display.php" method="post">
+    <form action="index.php" method="post">
         <div class="text-center">
             <h2>Register Forum</h2>
             <input type="text" name="first_name" placeholder="Type First name" value="">
