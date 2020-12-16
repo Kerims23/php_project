@@ -25,11 +25,12 @@ switch ($action){
             echo ' you must type in a email';
             echo"<br>";
         }else{
-            $userID=validate_login($email,$password);
-            if($userID==false){
+            $userId=Accounts_db::validate_login($email,$password);
+            $userId=$user->getId();
+            if($userId==false){
                 header(string:"location: .?action=display_registration");
             }else{
-                header(string:"location: .?action=display_questions&userID=$userID")
+                header(string:"location: .?action=display_questions&userId=$userId")
             }
     
         }
@@ -43,19 +44,19 @@ switch ($action){
     }
 
     case 'display_questions':{
-        $userID=filter_input(type:INPUT_GET, variable_name:'userID');
-        if($userID==NULL || $userID<0){
+        $userId=filter_input(type:INPUT_GET, variable_name:'userId');
+        if($userId==NULL || $userId<0){
             header(string:'location: .?action=display_login');
         }else{
-            $questions=get_users_questions($userID);
+            $questions=get_users_questions($userId);
             include('views/6question_forum.php')
         }
         break;
     }
     
     case 'display_questions_forum':{
-        $userID=filter_input(type:INPUT_GET, variable_name:'userID');
-        if($userID==NULL || $userID<0){
+        $userId=filter_input(type:INPUT_GET, variable_name:'userId');
+        if($userId==NULL || $userId<0){
             header(string:'location: .?action=display_login');
         }else{
             include('views/6question_forum.php')
@@ -65,15 +66,15 @@ switch ($action){
     
     
     case 'submit_question';{
-        $userID=filter_input(type:INPUT_POST,variable_name:'userID');
+        $userId=filter_input(type:INPUT_POST,variable_name:'userId');
         $title=filter_input(type:INPUT_POST,variable_name:'title');
         $body=filter_input(type:INPUT_POST,variable_name:'body');
         $skills=filter_input(type:INPUT_POST,'skills');
-        if($userID==NULL || $title==NULL || $body==NULL || $skills==NULL){
+        if($userId==NULL || $title==NULL || $body==NULL || $skills==NULL){
             echo 'Error'
         }else(
-            create_question($title,$body,$skills,$userID);
-            header(string:"location: .?action=display_questions&userID=$userID");
+            create_question($title,$body,$skills,$userId);
+            header(string:"location: .?action=display_questions&userId=$userId");
         )
     
         break;

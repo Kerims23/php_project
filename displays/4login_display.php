@@ -3,22 +3,17 @@
 require('pdo.php');
 
 
-//login form
+$email_address = filter_input(INPUT_POST,'email');
+$password = filter_input(INPUT_POST,'password');
 
-
-
+if ($email_address==NULL)
+    echo "type in an email address";
+    echo"<br>";
 
 if ($password == NULL){
     echo ' you must type in password';
     echo"<br>";
 }
-
-
-
-
-//if user was found display questions, if not found redirect to registration for all forums
-//sql query
-
 
 
 ?>

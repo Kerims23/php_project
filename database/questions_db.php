@@ -1,6 +1,6 @@
 <?php
 
-function get_user_questions($userID){
+function get_user_questions($userId){
     $db=Database::getDB();
     $query='SELECT * From questions WHERE ownerID= :userID';
     $statement=db->prepare($query);

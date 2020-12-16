@@ -81,7 +81,7 @@ if (count($question_skills) <3){
 
         <form action="1login.php" method="post">
             <input type="hidden" name="action" value="submit_question">
-            <input type="hidden" name="userID" value="<?php echo $userID; ?>">
+            <input type="hidden" name="userId" value="<?php echo $userId; ?>">
             
             <div class="form-group">
                 <label for="title">Question Title</label>
