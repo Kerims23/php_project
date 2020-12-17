@@ -11,7 +11,7 @@
     <h3>Links</h3>
       <li class="active"><a href="1login.php">Login</a></li>
       <li><a href="2registration.php">Register</a></li>
-      <li><a href="3question_forum.php">Question</a></li>
+      <li><a href="3question_form.php">Question</a></li>
       <br>
 
 
@@ -19,7 +19,7 @@
       <input type="hidden" name="action" value="validate_login">
         <div class="text-center">
           <div class="form-group">
-            <h2>Login Forum</h2>
+            <h2>Login Form</h2>
             <input type="email"  class="form-control" name="email_address" placeholder="Enter Email Address" id="Email">
           </div>
           <br><br>

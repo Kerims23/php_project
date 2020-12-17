@@ -10,7 +10,7 @@
         <h3>Links</h3>
         <li class="active"><a href="1login.php">Login</a></li>
         <li><a href="2registration.php">Register</a></li>
-        <li><a href="3question_forum.php">Question</a></li>
+        <li><a href="3question_form.php">Question</a></li>
     
 
 
@@ -19,7 +19,7 @@
         <form action="index.php" method="post">
             <div class="text-center">
 
-            <h2>Question Forum</h2>
+            <h2>Question Form</h2>
             
 
             <h3>What color is grass?</h3>

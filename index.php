@@ -4,6 +4,9 @@ require('account.php');
 require('accounts_db.php');
 require('questions_db.php');
 
+start_session();
+
+
 $action=filter_input(type:INPUT_POST,variable_name:'action');
 if($action==NULL){
     $action = filter_input(type:INPUT_GET, variable_name:'action');
@@ -14,28 +17,55 @@ if($action==NULL){
 
 switch ($action){
     case 'show_login':{
-        include('1login.php');
+        if ($_SESSION['userId']){
+            header("location: index.php?action=display_users");
+        }else{
+            include('1login.php');
+        }
         break;
     }
 
     case'validate_login':{
         $email = filter_input(INPUT_POST,'email_address');
         $password = filter_input(INPUT_POST,'password');
-        if ($email == NULL){
+        if ($email == NULL || $password == NULL){
             echo ' you must type in a email';
             echo"<br>";
         }else{
             $user=accounts_db::validate_login($email,$password);
             $userId=$user->getId();
             $userId=validate_login($email,$password);
-            if($userId==false){
-                header(string:"location: indexphp?action=display_registration");
+            if($userId!==false){
+                $_SESSION['userId']=$userId;
+                header("location: index.php?action=display_users");
             }else{
-                header(string:"location: .?action=display_questions&userId=$userId");
+                echo "invaliad login";
             }
     
         }
     
+        break;
+    }
+
+
+    case'display_users':{
+        $userId=$_SESSION['$userId'];
+        if ($userId ==NULL){
+            echo 'UserId not available'
+        } else{
+            $questions = get_questions_by_ownerId($userId);
+            include('6questions_form_display.php');
+        }
+        break;
+    }
+
+    case 'logout':{
+        destroy_session();
+        $_SESSION=array();
+        $name=session_name();
+        $expire=strtotime('-1 year');
+        $params=session_get_cookie_params();
+        setcookie($name, '',$expire,$params['path'],$params['domain'],$params['secure'],$params['httponly']);
         break;
     }
 
@@ -46,21 +76,22 @@ switch ($action){
 
     case 'display_questions':{
         $userId=filter_input(type:INPUT_GET, variable_name:'userId');
+        $listType=filter_input(INPUT_GET,variable_name:'listType');
         if($userId==NULL || $userId<0){
             header(string:'location: .?action=display_login');
         }else{
-            $questions=get_users_questions($userId);
-            include('6question_forum_display.php');
+            $questions=($listType === 'all') ? get_all_questions(): get_users_questions($userId);
+            include('6question_form_display.php');
         }
         break;
     }
     
-    case 'display_questions_forum':{
+    case 'display_questions_form':{
         $userId=filter_input(type:INPUT_GET, variable_name:'userId');
         if($userId==NULL || $userId<0){
             header(string:'location: .?action=display_login');
         }else{
-            include('6question_forum_display.php');
+            include('6question_form_display.php');
         }
         break;
     }
@@ -94,13 +125,8 @@ switch ($action){
         break;
     }
 
-    case 'cookie':{
-        $cookieId=$userId
-        $cookieEmail=$email
-        $cookiePassword=$password
-        $cookieQuestions
-        $cookie=setcookie()
-    }
+
+
 
     default:{
         $error = 'Error';

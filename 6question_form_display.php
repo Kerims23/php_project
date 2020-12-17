@@ -40,13 +40,7 @@ if (count($question_skills) <3){
 }
 
 
-
-
-
 ?>
-
-
-
 
 
 <html>
@@ -55,6 +49,10 @@ if (count($question_skills) <3){
   <h1>Project 2</h1>
 </head>
     <body>
+        <a href=".?action=display_question_form&userId=<?php echo $userId; ?>">Add Questions</a>
+        <a href=".?action=display_questions&userId=<?php echo $usrId; ?>&listType=mine">My Questions</a>
+        <a href=".?action=display_questions&userId=<?php echo $usrId; ?>&listType=all">All Questions</a>
+
         <table>
             <tr>
                 <th>NAME</th>
@@ -68,14 +66,21 @@ if (count($question_skills) <3){
             <?php endforeach; ?>
         </table>
 
-        <form action="1login.php" method="post">
+        <form action="index.php" method="post">
             <input type="hidden" name="action" value="submit_question">
             <input type="hidden" name="userId" value="<?php echo $userId; ?>">
             
-            <div class="form-group">
-                <label for="title">Question Title</label>
-                <input type="text" name="title">
-            </div>
+
+   <form action="." method="post">
+                <input type="hidden" name="action" value="delete_question">
+                <input type="hidden" name="questionId" value="<?php echo $question['id']; ?>">
+                <input type="hidden" name="userId" value="<?php echo $userId; ?>">
+               
+                <input type="submit" value="Delete">
+            </form>
+
+
+
 
             <div class="form-group">
                 <label for="title">Question Title</label>
@@ -83,21 +88,22 @@ if (count($question_skills) <3){
             </div>
 
             <div class="form-group">
-                <label for="skills">Question Title</label>
+                <label for="body">Question body</label>
+                <input type="text" name="title">
+            </div>
+
+            <div class="form-group">
+                <label for="skills">Question skills</label>
                 <input type="text" name="skills">
             </div>
+
+
+
 
             <input type="submit" class="btn btn-primary" value="Add Question">
         </form>
 
-        <form action="." method="post">
-                <input type="hidden" name="action" value="delete_question">
-                <input type="hidden" name="questionId" value="<?php echo $question['id']; ?>">
-                <input type="hidden" name="userId" value="<?php echo $userId; ?>">
-                <input type="submit" value="Delete Question">
-            </form>
-
-
+     
 
         <div>
             Question: <?php echo $question; ?>
@@ -113,7 +119,7 @@ if (count($question_skills) <3){
         <h3>Links</h3>
         <li class="active"><a href="1login.php">Login</a></li>
         <li><a href="2registration.php">Register</a></li>
-        <li><a href="3question_forum.php">Question</a></li>
+        <li><a href="3question_form.php">Question</a></li>
 
     </body>
 </html>
