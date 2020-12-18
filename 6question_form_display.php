@@ -103,6 +103,12 @@ if (count($question_skills) <3){
             <input type="submit" class="btn btn-primary" value="Add Question">
         </form>
 
+        <form allign="right" name="form1" method="post" action="index.php">
+            <label class="logoutLblPos">
+             <input name="submit2" type="submit" id="submit2" value="log out">
+            </label>
+        </form>
+
      
 
         <div>
