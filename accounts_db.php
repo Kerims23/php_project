@@ -6,14 +6,14 @@ class accounts_db{
         $db=Database::getDB();
         $query='SELECT * FROM accounts WHERE email=:email_address AND password=:password';
         $statement=$db->prepare($query);
-        $statement->bindValue(parameter:':email',$email_address);
-        $statement->bindValue(parameter:':password',$password);
+        $statement->bindValue(':email',$email_address);
+        $statement->bindValue(':password',$password);
         $statement->execute();
         $user=$statement->fetch();
         $statement->close_cursor();
 
         if(count($user)>0){
-            $user=new Account($user['id'],($user['email'],($user['fname'],($user['lname'],($user['phoneNumber'],($user['birthday'],($user['password']);
+            $user=new Account(($user['id']),($user['email']),($user['fname']),($user['lname']),($user['phoneNumber']),($user['birthday']),($user['password']));
             return $user;
         }else{
             return false;
@@ -29,7 +29,7 @@ class accounts_db{
         $query='INSERT INTO accounts
         (email,fname,lname,birthday,password)
         VALUES
-        (:email,:fname,:lname,:birthday,:password');
+        (:email,:fname,:lname,:birthday,:password)';
         $statement=$db->prepare($query);
         $statement->bindValue(':email',$email);
         $statement->bindValue(':password',$password);

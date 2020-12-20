@@ -13,7 +13,7 @@ class QuestionDB{
         $statement->close_cursor();
 
         if(count($questions_form)>0){
-            $questions_form=new Question($questions_form['title'],($questions_form['body'],($questions_form['skills']);
+            $questions_form=new QuestionDB(($questions_form['title']),($questions_form['body']),($questions_form['skills']));
             return $questions_form;
         }else{
             return false;
@@ -29,7 +29,7 @@ class QuestionDB{
         $statement->execute();
         $question = $statement->fetch();
         $statement->closeCursor();
-        return $question
+        return $question;
 
       
 

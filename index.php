@@ -4,12 +4,13 @@ require('account.php');
 require('accounts_db.php');
 require('questions_db.php');
 
-start_session();
+session_start();
 
 
-$action=filter_input(type:INPUT_POST,variable_name:'action');
+
+$action=filter_input(INPUT_POST,'action');
 if($action==NULL){
-    $action = filter_input(type:INPUT_GET, variable_name:'action');
+    $action = filter_input(INPUT_GET, 'action');
     if ($action==NULL){
         $action='show_login';
     }
@@ -34,7 +35,7 @@ switch ($action){
         }else{
             $user=accounts_db::validate_login($email,$password);
             $userId=$user->getId();
-            $userId=validate_login($email,$password);
+            //$userId=validate_login($email,$password);
             if($userId!==false){
                 $_SESSION['userId']=$userId;
                 header("location: index.php?action=display_users");
@@ -51,7 +52,7 @@ switch ($action){
     case'display_users':{
         $userId=$_SESSION['$userId'];
         if ($userId ==NULL){
-            echo 'UserId not available'
+            echo 'UserId not available';
         } else{
             $questions = get_questions_by_ownerId($userId);
             include('6questions_form_display.php');
@@ -75,10 +76,10 @@ switch ($action){
     }
 
     case 'display_questions':{
-        $userId=filter_input(type:INPUT_GET, variable_name:'userId');
-        $listType=filter_input(INPUT_GET,variable_name:'listType');
+        $userId=filter_input(INPUT_GET, 'userId');
+        $listType=filter_input(INPUT_GET,'listType');
         if($userId==NULL || $userId<0){
-            header(string:'location: .?action=display_login');
+            header('location: .?action=display_login');
         }else{
             $questions=($listType === 'all') ? get_all_questions(): get_users_questions($userId);
             include('6question_form_display.php');
@@ -87,9 +88,9 @@ switch ($action){
     }
     
     case 'display_questions_form':{
-        $userId=filter_input(type:INPUT_GET, variable_name:'userId');
+        $userId=filter_input(INPUT_GET, 'userId');
         if($userId==NULL || $userId<0){
-            header(string:'location: .?action=display_login');
+            header('location: .?action=display_login');
         }else{
             include('6question_form_display.php');
         }
@@ -97,22 +98,22 @@ switch ($action){
     }
     
     
-    case 'submit_question';{
-        $userId=filter_input(type:INPUT_POST,variable_name:'userId');
-        $title=filter_input(type:INPUT_POST,variable_name:'title');
-        $body=filter_input(type:INPUT_POST,variable_name:'body');
-        $skills=filter_input(type:INPUT_POST,'skills');
+    case 'submit_question':{
+        $userId=filter_input(INPUT_POST,'userId');
+        $title=filter_input(INPUT_POST,'title');
+        $body=filter_input(INPUT_POST,'body');
+        $skills=filter_input(INPUT_POST,'skills');
         if($userId==NULL || $title==NULL || $body==NULL || $skills==NULL){
-            echo 'Error'
+            echo 'Error';
         }else{
             create_question($title,$body,$skills,$userId);
-            header(string:"location: .?action=display_questions&userId=$userId");
+            header("location: .?action=display_questions&userId=$userId");
     }
     
         break;
     }
 
-    case 'delete_question': {
+    case 'delete_question':{
         $questionId = filter_input(INPUT_POST, 'questionId');
         $userId = filter_input(INPUT_POST, 'userId');
         if ($questionId == NULL || $userId == NULL) {
@@ -134,3 +135,4 @@ switch ($action){
     }
 }
 
+?>
